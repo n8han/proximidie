@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Shutdown</string>
+    <string name="app_name">Proximidie</string>
     <string name="really_shutdown">Shutdown?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>

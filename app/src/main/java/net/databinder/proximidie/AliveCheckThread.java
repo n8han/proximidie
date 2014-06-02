@@ -1,4 +1,4 @@
-package com.ubicoo.shutdown;
+package net.databinder.proximidie;
 
 import android.util.Log;
 

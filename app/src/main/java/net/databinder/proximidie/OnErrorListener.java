@@ -1,4 +1,4 @@
-package com.ubicoo.shutdown;
+package net.databinder.proximidie;
 
 public interface OnErrorListener {
 
