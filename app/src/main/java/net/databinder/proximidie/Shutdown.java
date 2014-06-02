@@ -2,8 +2,11 @@ package net.databinder.proximidie;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -15,6 +18,7 @@ public class Shutdown extends Activity implements OnErrorListener, DialogInterfa
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(R.string.really_shutdown).setOnKeyListener(this).setCancelable(true)
 				.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
