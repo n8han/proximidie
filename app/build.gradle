@@ -2,10 +2,10 @@ apply plugin: 'android'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.1"
+    buildToolsVersion "19.1"
 
     defaultConfig {
-        packageName "net.databinder.proximidie"
+        applicationId "net.databinder.proximidie"
         minSdkVersion 8
         targetSdkVersion 19
     }
