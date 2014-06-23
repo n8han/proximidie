@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Proximidie</string>
     <string name="really_shutdown">Shutdown?</string>
     <string name="yes">Yes</string>
@@ -8,4 +9,11 @@
     <string name="not_rooted">Your phone needs to be rooted and this app needs to be allowed to run a superuser command.</string>
     <string name="what">What?</string>
     <string name="rooting_url">http://en.wikipedia.org/wiki/Rooting_(Android_OS)</string>
+
+    <string name="title_activity_settings">Proximidie</string>
+    <string name="action_settings">Settings</string>
+    <string name="pref_summary_main_switch_off">Do nothing when selected devices disconnect</string>
+    <string name="pref_summary_main_switch_on">Shutdown this device when selected devices disconnect</string>
+    <string name="pref_devices_cat">Bluetooth devices</string>
+
 </resources>
