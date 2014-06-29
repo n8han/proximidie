@@ -29,12 +29,10 @@ public class Settings extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        if (savedInstanceState == null) {
-            TriggerSettingsFragment settings = new TriggerSettingsFragment();
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.container, settings)
-                    .commit();
-        }
+        TriggerSettingsFragment settings = new TriggerSettingsFragment();
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, settings)
+                .commit();
     }
 
     @Override
