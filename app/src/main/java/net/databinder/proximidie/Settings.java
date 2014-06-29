@@ -49,7 +49,7 @@ public class Settings extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class TriggerSettingsFragment extends PreferenceFragment {
+    public static class TriggerSettingsFragment extends PreferenceFragment {
 
         public TriggerSettingsFragment() {
         }
@@ -70,7 +70,7 @@ public class Settings extends ActionBarActivity {
                 Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
 
                 for (BluetoothDevice device : pairedDevices) {
-                    CheckBoxPreference pref = new CheckBoxPreference(getApplicationContext());
+                    CheckBoxPreference pref = new CheckBoxPreference(getActivity().getApplicationContext());
                     pref.setKey("bluetooth_device_" + device.getAddress());
                     pref.setTitle(device.getName());
                     cat.addPreference(pref);
