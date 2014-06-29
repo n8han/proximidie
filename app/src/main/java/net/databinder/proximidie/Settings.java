@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
 
 import net.databinder.proximidie.R;
 
@@ -33,6 +34,8 @@ public class Settings extends ActionBarActivity {
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, settings)
                 .commit();
+
+
     }
 
     public static class TriggerSettingsFragment extends PreferenceFragment {
@@ -60,6 +63,7 @@ public class Settings extends ActionBarActivity {
                     pref.setKey("bluetooth_device_" + device.getAddress());
                     pref.setTitle(device.getName());
                     cat.addPreference(pref);
+                    pref.setDependency("pref_key_main_switch");
                 }
             }
         }

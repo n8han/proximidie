@@ -12,8 +12,8 @@
 
     <string name="title_activity_settings">Proximidie</string>
     <string name="action_settings">Settings</string>
-    <string name="pref_summary_main_switch_off">Do nothing when selected devices disconnect</string>
-    <string name="pref_summary_main_switch_on">Shutdown this device when selected devices disconnect</string>
+    <string name="pref_summary_main_switch_off">Do nothing when devices disconnect</string>
+    <string name="pref_summary_main_switch_on">Shutdown when selected devices disconnect</string>
     <string name="pref_devices_cat">Bluetooth devices</string>
 
 </resources>
