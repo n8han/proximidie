@@ -2,9 +2,12 @@ package net.databinder.proximidie;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.preference.CheckBoxPreference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -25,6 +28,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Settings extends ActionBarActivity {
+
+    private static String MAIN_SWITCH = "pref_key_main_switch";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +65,21 @@ public class Settings extends ActionBarActivity {
 
                 for (BluetoothDevice device : pairedDevices) {
                     CheckBoxPreference pref = new CheckBoxPreference(getActivity().getApplicationContext());
-                    pref.setKey("bluetooth_device_" + device.getAddress());
+                    pref.setKey(devicePreferenceKey(device));
                     pref.setTitle(device.getName());
                     cat.addPreference(pref);
-                    pref.setDependency("pref_key_main_switch");
+                    pref.setDependency(MAIN_SWITCH);
                 }
             }
         }
+    }
+    private static String devicePreferenceKey(BluetoothDevice device) {
+        return "bluetooth_device_" + device.getAddress();
+    }
+
+    public static Boolean shutdownForDevice(Context context, BluetoothDevice device) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        Boolean main = prefs.getBoolean(MAIN_SWITCH, false);
+        return main && prefs.getBoolean(Settings.devicePreferenceKey(device), false);
     }
 }
