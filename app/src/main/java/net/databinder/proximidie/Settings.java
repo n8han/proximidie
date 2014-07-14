@@ -5,9 +5,11 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.CheckBoxPreference;
+import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.preference.SwitchPreference;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -20,9 +22,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
+import android.widget.Switch;
 
 import net.databinder.proximidie.R;
 
+import java.io.IOError;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -52,6 +57,20 @@ public class Settings extends ActionBarActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
+
+            findPreference(MAIN_SWITCH).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    if ((Boolean)newValue) {
+                        try {
+                            Runtime.getRuntime().exec("su");
+                        } catch (IOException exc) {
+                            Log.e(Settings.class.getName(), "Unexpected error", exc);
+                        }
+                    }
+                    return true;
+                }
+            });
 
             addBluetoothDevices((PreferenceCategory) findPreference("pref_key_devices_cat"));
         }
